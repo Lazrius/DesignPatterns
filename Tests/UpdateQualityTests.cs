@@ -7,7 +7,7 @@ public class UpdateQualityTests : TestHarness
 {
     [Theory]
     [MemberData(nameof(Inventories), MemberType = typeof(TestHarness))]
-    public void Test1(Inventory inventory)
+    public void UpdateInventories(IInventory inventory)
     {
         inventory.UpdateQuality();
 

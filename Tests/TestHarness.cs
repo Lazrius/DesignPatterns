@@ -7,21 +7,22 @@ public class TestHarness
 {
     protected TestHarness() { }
 
-    public static readonly IList<Item> DefaultItems = new List<Item>()
+    public static IList<Item> DefaultItems => new List<Item>()
     {
-        new Item { Name = Constants.AgedBrie, Quality = Constants.BaseQuality, SellIn = Constants.BaseSellIn },
-        new Item { Name = Constants.BackstagePass, Quality = Constants.BackstageQuality, SellIn = Constants.BackstageSellIn },
-        new Item { Name = Constants.Sulfuras, Quality = Constants.SulfurasQuality, SellIn = Constants.SulfurasSellIn },
-        new Item { Name = Constants.NormalItem, Quality = Constants.BaseQuality, SellIn = Constants.BaseSellIn },
-        //new Item { Name = Constants.ConjuredManaCake, Quality = 10, SellIn = 20 },
+        new() { Name = Constants.AgedBrie, Quality = Constants.BaseQuality, SellIn = Constants.BaseSellIn },
+        new() { Name = Constants.BackstagePass, Quality = Constants.BackstageQuality, SellIn = Constants.BackstageSellIn },
+        new() { Name = Constants.Sulfuras, Quality = Constants.SulfurasQuality, SellIn = Constants.SulfurasSellIn },
+        new() { Name = Constants.NormalItem, Quality = Constants.BaseQuality, SellIn = Constants.BaseSellIn },
+        new() { Name = Constants.ConjuredManaCake, Quality = 10, SellIn = 20 },
     };
 
     public static TheoryData<Inventory> Inventories => new()
     {
-        new Original.GildedRose(DefaultItems),
+        //new Original.GildedRose(DefaultItems),
+        new Mediator.GildedRose(DefaultItems)
     };
 
-    protected static void ValidateRules(Inventory inventory)
+    protected static void ValidateRules(IInventory inventory)
     {
         foreach (var item in inventory.GetItems())
         {
@@ -30,7 +31,7 @@ public class TestHarness
                 Constants.Sulfuras => new SulfurasRule().Validate(item),
                 Constants.AgedBrie => new AgedRuleBrie().Validate(item),
                 Constants.BackstagePass => new BackstageRule().Validate(item),
-                Constants.ConjuredManaCake => new BackstageRule().Validate(item),
+                Constants.ConjuredManaCake => new ConjureRule().Validate(item),
                 _ => new BaseRule().Validate(item)
             }).Should().BeTrue($"{item.Name} should successfully be validated");
         }

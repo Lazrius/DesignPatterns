@@ -8,11 +8,6 @@ public class AgedRuleBrie : BaseRule
             return false;
         }
 
-        if (item.SellIn >= 0 && item.Quality != Constants.BaseQuality + (Constants.BaseSellIn - item.SellIn))
-        {
-            return false;
-        }
-
-        return true;
+        return item.SellIn < 0 || item.Quality == Constants.BaseQuality + (Constants.BaseSellIn - item.SellIn);
     }
 }

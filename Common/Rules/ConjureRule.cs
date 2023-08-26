@@ -8,7 +8,7 @@ public class ConjureRule : BaseRule
             return false;
         }
 
-        if (item.SellIn >= 0 && item.Quality != Constants.BaseQuality - (Constants.BaseSellIn - item.SellIn) * 2)
+        if (item.Quality != Constants.BaseQuality - (Constants.BaseSellIn - item.SellIn) * 2)
         {
             return false;
         }
