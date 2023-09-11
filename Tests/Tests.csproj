@@ -25,6 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Command\Command.csproj" />
 		<ProjectReference Include="..\Common\Common.csproj" />
 		<ProjectReference Include="..\Mediator\Mediator.csproj" />
 		<ProjectReference Include="..\Original\Original.csproj" />

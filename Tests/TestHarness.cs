@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Common;
+﻿using DesignPatterns.Command;
+using DesignPatterns.Common;
 using DesignPatterns.Common.Rules;
 using FluentAssertions;
 
@@ -19,7 +20,8 @@ public class TestHarness
     public static TheoryData<Inventory> Inventories => new()
     {
         //new Original.GildedRose(DefaultItems),
-        new Mediator.GildedRose(DefaultItems)
+        new Mediator.GildedRose(DefaultItems),
+        new Command.GildedRose(DefaultItems)
     };
 
     protected static void ValidateRules(IInventory inventory)
