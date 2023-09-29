@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.Command;
 using DesignPatterns.Common;
 using DesignPatterns.Common.Rules;
+using DesignPatterns.Memento;
 using FluentAssertions;
 
 namespace DesignPatterns.Tests;
@@ -21,7 +22,8 @@ public class TestHarness
     {
         //new Original.GildedRose(DefaultItems),
         new Mediator.GildedRose(DefaultItems),
-        new Command.GildedRose(DefaultItems)
+        new Command.GildedRose(DefaultItems),
+        new Memento.GildedRose(DefaultItems),
     };
 
     protected static void ValidateRules(IInventory inventory)
