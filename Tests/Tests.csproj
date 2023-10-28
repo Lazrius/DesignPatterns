@@ -30,6 +30,8 @@
 		<ProjectReference Include="..\Mediator\Mediator.csproj" />
 		<ProjectReference Include="..\Memento\Memento.csproj" />
 		<ProjectReference Include="..\Original\Original.csproj" />
+		<ProjectReference Include="..\Singleton\Singleton.csproj" />
+		<ProjectReference Include="..\Visitor\Visitor.csproj" />
 	</ItemGroup>
 
 </Project>

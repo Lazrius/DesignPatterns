@@ -25,6 +25,7 @@ public class TestHarness
         new Command.GildedRose(DefaultItems),
         new Memento.GildedRose(DefaultItems),
         new Visitor.GildedRose(DefaultItems),
+        new Singleton.GildedRose(DefaultItems),
     };
 
     protected static void ValidateRules(IInventory inventory)
