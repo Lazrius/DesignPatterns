@@ -25,6 +25,11 @@ public class GildedRose : Inventory
                     {
                         _items[i].Quality = _items[i].Quality - 1;
                     }
+
+                    if (_items[i].Name == Constants.ConjuredManaCake)
+                    {
+                        _items[i].Quality = _items[i].Quality - 1;
+                    }
                 }
             }
             else
@@ -51,6 +56,10 @@ public class GildedRose : Inventory
                             }
                         }
                     }
+                    else
+                    {
+                        _items[i].Quality = _items[i].Quality + 1;
+                    }
                 }
             }
 
@@ -59,7 +68,7 @@ public class GildedRose : Inventory
                 _items[i].SellIn = _items[i].SellIn - 1;
             }
 
-            if (_items[i].SellIn > 0)
+            if (_items[i].SellIn <= 0)
             {
                 if (_items[i].Name != Constants.AgedBrie)
                 {

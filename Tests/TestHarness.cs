@@ -20,7 +20,6 @@ public class TestHarness
 
     public static TheoryData<Inventory> Inventories => new()
     {
-        //new Original.GildedRose(DefaultItems),
         new Mediator.GildedRose(DefaultItems),
         new Command.GildedRose(DefaultItems),
         new Memento.GildedRose(DefaultItems),

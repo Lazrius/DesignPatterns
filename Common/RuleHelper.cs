@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns.Common;
+﻿using System;
+
+namespace DesignPatterns.Common;
 
 public static class RuleHelper
 {
@@ -7,12 +9,23 @@ public static class RuleHelper
     // that the various coding methods work as intended
     public static (int, int) AdjustItem(RuleType type, int quality, int sellIn)
     {
+        sellIn = AdjustSellIn(type, sellIn);
+        quality = AdjustQuality(type, quality, sellIn);
+
+        return (quality, sellIn);
+    }
+
+    public static int AdjustSellIn(RuleType type, int sellIn)
+    {
+        return type is RuleType.Legendary ? sellIn : sellIn - 1;
+    }
+
+    public static int AdjustQuality(RuleType type, int quality, int sellIn)
+    {
         if (type == RuleType.Legendary)
         {
-            return (quality, sellIn);
+            return quality;
         }
-
-        sellIn--;
 
         switch (type)
         {
@@ -21,6 +34,10 @@ public static class RuleHelper
                 break;
             case RuleType.Aged:
                 quality++;
+                if (sellIn < 50)
+                {
+                    quality++;
+                }
                 break;
             case RuleType.Backstage:
                 switch (sellIn)
@@ -45,14 +62,27 @@ public static class RuleHelper
                 break;
         }
 
-        quality = quality switch
+        if (sellIn > 0)
         {
-            > 50 => 50,
-            < 0 => 0,
-            _ => quality
-        };
+            return quality;
+        }
 
-        return (quality, sellIn);
+        switch (quality)
+        {
+            case < 50 when type == RuleType.Aged:
+                quality++;
+                break;
+            case > 0 when type == RuleType.Conjured:
+                quality = Math.Clamp(quality - 2, 0, 50);
+                break;
+            default:
+            {
+                quality = type == RuleType.Backstage ? 0 : Math.Clamp(quality - 1, 0, int.MaxValue);
+                break;
+            }
+        }
+
+        return quality;
     }
 }
 

@@ -25,11 +25,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Bridge\Bridge.csproj" />
+		<ProjectReference Include="..\Builder\Builder.csproj" />
 		<ProjectReference Include="..\Command\Command.csproj" />
 		<ProjectReference Include="..\Common\Common.csproj" />
+		<ProjectReference Include="..\Decorator\Decorator.csproj" />
+		<ProjectReference Include="..\Facade\Facade.csproj" />
+		<ProjectReference Include="..\Factory\Factory.csproj" />
 		<ProjectReference Include="..\Mediator\Mediator.csproj" />
 		<ProjectReference Include="..\Memento\Memento.csproj" />
 		<ProjectReference Include="..\Original\Original.csproj" />
+		<ProjectReference Include="..\Prototype\Prototype.csproj" />
+		<ProjectReference Include="..\Refactored\Refactored.csproj" />
 		<ProjectReference Include="..\Singleton\Singleton.csproj" />
 		<ProjectReference Include="..\Visitor\Visitor.csproj" />
 	</ItemGroup>

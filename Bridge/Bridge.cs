@@ -43,7 +43,7 @@ internal class ItemUpdater : ItemWrapper
 
         var item = _items[itemIndex];
 
-        _ = item.Name switch
+        (item.Quality, item.SellIn) = item.Name switch
         {
             Constants.AgedBrie => RuleHelper.AdjustItem(RuleType.Aged, item.Quality, item.SellIn),
             Constants.ConjuredManaCake => RuleHelper.AdjustItem(RuleType.Conjured, item.Quality, item.SellIn),
